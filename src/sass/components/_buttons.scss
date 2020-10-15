@@ -1,0 +1,19 @@
+%btn{
+    color: #fff;
+    padding: .7rem;
+    border: 0;
+    font-weight: bold;
+    &:hover{
+        filter: brightness(125%);
+    }
+}
+
+.btn-primary{
+    @extend %btn;
+    background-color: $primary;
+}
+
+.btn-danger{
+    @extend %btn;
+    background-color: $danger;
+}

@@ -1,0 +1,21 @@
+.product-list{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+   
+    justify-content: space-between;
+
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        border-bottom: 2px solid #efefef;    
+    }
+
+    &__data{
+        padding: 2rem;
+        text-align: center;
+    }
+
+}

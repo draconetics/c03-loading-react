@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {Img} from 'react-image'
+import ProductService from './services/ProductService'
+import LoadingPage from './pages/LoadingPage';
+import LoadingComponent from './components/LoadingComponent';
+import ProductListComponent from './components/ProductListComponent'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+  const [loading, setLoading] = useState("")
+  const [productList, setProductList] = useState([])
+
+  useEffect(() => {
+      ProductService.getAll()
+          .then((resp)=>{
+              setLoading("show");
+              setProductList(resp.data)
+          })
+          .catch(e=>console.log(e))
+  }, [])
+
+  return (loading === "")?(<LoadingPage></LoadingPage>):(
+    
+    <div className={"App "+ loading}>
+      
+      <ProductListComponent productList={productList} ></ProductListComponent>
+
     </div>
   );
 }
