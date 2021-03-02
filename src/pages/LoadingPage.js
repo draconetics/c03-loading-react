@@ -1,15 +1,11 @@
 import React from 'react';
-import LoadingComponent from '../components/LoadingComponent';
+import LoadingComponent from '../components/Loading';
 
+const LoadingPage = () => (
+  <div className="loading-page">
+    <LoadingComponent />
+  </div>
 
-const LoadingPage = ()=>{
-    return(
-        <div className="loading-page">
-            <LoadingComponent></LoadingComponent>
-            <h2>Loading ...</h2>
-        </div>
-        
-    );
-}
+);
 
 export default LoadingPage;

@@ -3,14 +3,18 @@
     padding: .7rem;
     border: 0;
     font-weight: bold;
-    &:hover{
-        filter: brightness(125%);
-    }
+    display:block;
+    cursor: pointer;
+    transition: all .5s ease;
 }
 
 .btn-primary{
     @extend %btn;
     background-color: $primary;
+}
+.btn-primary:hover{
+    background-color: rgba($primary, .9);
+    color:$warning;
 }
 
 .btn-danger{

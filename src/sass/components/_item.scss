@@ -1,0 +1,22 @@
+.item{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 3rem 0;
+    
+    &__image{
+        min-width: 300px;
+    }
+
+    &__data{
+        min-width: 400px;
+        padding: 2rem;
+        text-align: center;
+    }
+    &__ranking{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color: $success;
+    }
+}

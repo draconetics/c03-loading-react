@@ -1,31 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import {Img} from 'react-image'
-import ProductService from './services/ProductService'
-import LoadingPage from './pages/LoadingPage';
-import LoadingComponent from './components/LoadingComponent';
-import ProductListComponent from './components/ProductListComponent'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProductListComponent from './components/ProductList';
+import Header from './components/Header';
+import Item from './components/Item';
 
 function App() {
-
-  const [loading, setLoading] = useState("")
-  const [productList, setProductList] = useState([])
-
-  useEffect(() => {
-      ProductService.getAll()
-          .then((resp)=>{
-              setLoading("show");
-              setProductList(resp.data)
-          })
-          .catch(e=>console.log(e))
-  }, [])
-
-  return (loading === "")?(<LoadingPage></LoadingPage>):(
-    
-    <div className={"App "+ loading}>
-      
-      <ProductListComponent productList={productList} ></ProductListComponent>
-
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <ProductListComponent />
+          </Route>
+          <Route path="/item" component={Item} />
+        </Switch>
+      </Router>
     </div>
   );
 }
