@@ -1,0 +1,129 @@
+.checklist{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.checklist__main {
+    width: 70%;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+
+
+/***************** news *********************/
+
+.checklist__news {
+    background-color: $white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 1rem 2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.checklist__news h2 {
+    text-align: left;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.checklist__news span {
+    text-align: left;
+    padding: .5rem;
+    background-color: $success-90;
+    margin:2rem 0;
+    width: fit-content;
+}
+/********************** list **************************/
+
+.checklist__list {
+    padding: 0 2rem;
+    background-color: $white;
+    margin-top: 10px;
+    border-radius: 8px;
+    min-height: 300px;
+}
+
+.checklist__header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid $secondary-90;
+}
+
+.checklist__header span:nth-child(2) {
+    margin: 0 1rem;
+}
+
+.checklist__content {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checklist__select {
+    margin-right: 1rem;
+}
+
+.checklist__item {
+    padding: 1rem 0;
+    display: flex;
+}
+
+.checklist__item img{
+    width: 200px;
+}
+
+.checklist__item-content {
+
+}
+
+/**********************resume****************************/
+.checklist__right {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 25%;
+    background-color: $white;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    justify-content: flex;
+    flex-direction: column;
+}
+
+.checklist__right h2{
+    margin-bottom: 1rem;
+}
+
+.checklist__right div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checklist__right-total {
+    padding: 1rem;
+    border-top: 1px solid $secondary-90;
+    font-weight: 700;
+}
+
+.checklist__right-total p:nth-child(2){
+    font-size: 1.5rem;
+}
+
+
+.checklist__right button {
+    outline: none;
+    width: 100%;
+    padding: .8rem 0;
+    margin: 1rem 0;
+    text-transform: uppercase;
+}

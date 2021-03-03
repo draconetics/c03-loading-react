@@ -2,12 +2,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
     <nav className="header">
       <div className="header__menu-top">
-        <img src="/img/amazon.png" alt="logo-amazon" />
+        <Link to="/">
+          <img src="/img/amazon.png" alt="logo-amazon" />
+        </Link>
         <div className="header__send">
           Send to
           {' '}
@@ -22,8 +25,14 @@ export default function Header() {
           <li className="header__flag">
             <img alt="united States" src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg" />
           </li>
-          <li className="header__account">Hello, Mario <p>Account & Lists</p></li>
-          <li className="header__orders">Returns <p>& Orders</p></li>
+          <li className="header__account">
+            Hello, Mario
+            <p>Account & Lists</p>
+          </li>
+          <li className="header__orders">
+            Returns
+            <p>& Orders</p>
+          </li>
           <li className="header__cart">
             <span>2</span>
             <FontAwesomeIcon icon={faShoppingCart} />

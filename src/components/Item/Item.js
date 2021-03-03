@@ -3,11 +3,13 @@ import { Redirect, Link } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 import ReactStars from 'react-stars';
 import PropTypes from 'prop-types';
-import { isEmptyObject } from './utils';
+import { isEmptyObject } from '../utils';
 
 export default function Item(props) {
   console.log(props);
-  const { location = {} } = props;
+  const {
+    location = {}, cartList, addItem, decrementItem,
+  } = props;
   if (isEmptyObject(location) || !location.state || isEmptyObject(location.state)) {
     return <Redirect to="/" />;
   }
@@ -53,9 +55,13 @@ export default function Item(props) {
         </div>
         <h3>{description}</h3>
         <p>{madeUp}</p>
-        <Link className="btn btn-primary" to="/">
+        <button type="button" onClick={() => addItem(location.state)}>
           Add to cart
-        </Link>
+        </button>
+        <button type="button" onClick={() => decrementItem(location.state)}>
+          delete item
+        </button>
+        {JSON.stringify(cartList)}
       </div>
     </div>
   );
