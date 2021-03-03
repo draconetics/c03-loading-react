@@ -15,6 +15,64 @@
         min-width: 400px;
         padding: 2rem;
         text-align: center;
+        h3,p{
+            font-weight: 100;
+            font-size: .9rem;
+        }
+        h4{
+            color:$danger-10;
+        }
+        &-add,
+        &-buy{
+            border: 1px solid transparent;
+            padding: .5rem 3rem;
+            margin: 1rem 0;
+            color: $white;
+            background-color: $primary;
+            font-weight: 700;
+            transition:color .5s ease;
+            cursor: pointer;
+        }
+        &-add:hover{
+            color: $warning;
+        }
+        &-buy{
+            background-color: $white;
+            color: $primary;
+            border: 1px solid $secondary-70;
+            margin:0 1rem;
+            font-size: 1rem;
+            font-weight: 100;
+        }
+        &-buy:hover{
+            background-color: $secondary-70;
+        }
+        &-operations{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            p{
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                border: 1px solid $secondary-70;
+                border-radius: 4px;
+                margin: 0 1rem;
+            }
+            button{
+                font-size: 1.5rem;
+                padding:.5rem 1rem;
+                border-radius: 50%;
+                border: none;
+                outline: none;
+                background-color: $secondary-70;
+                transition: .5s ease;
+                transition-property: background-color;
+            }
+            button:hover{
+                background-color: $secondary-50;
+                color:$white;
+            }
+        }
     }
     &__ranking{
         display:flex;
@@ -22,4 +80,5 @@
         align-items: center;
         color: $success;
     }
+    
 }

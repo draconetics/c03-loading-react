@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageLoader from 'react-load-image';
+import ReactStars from 'react-stars';
 import Loading from './Loading';
 import ProductService from '../services/ProductService';
 
@@ -32,8 +33,16 @@ const ProductList = () => {
               </div>
               <div className="product-list__data">
                 <h2>{item.name}</h2>
-                <h3>{item.description}</h3>
-                <p>{item.madeUp}</p>
+                <p>
+                  <ReactStars
+                    count={5}
+                    value={item.ranking}
+                    size={24}
+                    color2="#ffd700"
+                    edit={false}
+                  />
+                </p>
+                <h3>{`US$ ${item.price}`}</h3>
                 <Link
                   className="btn btn-primary"
                   to={{

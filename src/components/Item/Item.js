@@ -1,25 +1,32 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 import ReactStars from 'react-stars';
 import PropTypes from 'prop-types';
-import { isEmptyObject } from '../utils';
+import { Link } from 'react-router-dom';
 
 export default function Item(props) {
   console.log(props);
   const {
     location = {}, cartList, addItem, decrementItem,
   } = props;
-  if (isEmptyObject(location) || !location.state || isEmptyObject(location.state)) {
-    return <Redirect to="/" />;
-  }
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-    alert(`this product is ${newRating} stars`);
+
+  const existCartItem = () => {
+    const searchedItem = cartList.filter((item) => item.product._id === location.state._id);
+    const cartItem = searchedItem[0] || null;
+    if (cartItem) {
+      return (
+        <>
+          <button type="button" onClick={() => addItem(location.state)}>+</button>
+          <p>{cartItem.size}</p>
+          <button type="button" onClick={() => decrementItem(location.state)}>-</button>
+        </>
+      );
+    }
+    return null;
   };
 
   const {
-    name, image, description, madeUp,
+    name, image, description, madeUp, ranking, price,
   } = (location && location.state) || {};
   return (
     <div className="item container">
@@ -47,21 +54,25 @@ export default function Item(props) {
           <span>this product is : </span>
           <ReactStars
             count={5}
-            onChange={ratingChanged}
+            value={ranking}
             size={24}
             color2="#ffd700"
+            edit={false}
           />
           <span>stars</span>
         </div>
+        <h4>{`US$ ${price}`}</h4>
         <h3>{description}</h3>
-        <p>{madeUp}</p>
-        <button type="button" onClick={() => addItem(location.state)}>
+        <p>{`Manufacturer date: ${madeUp}`}</p>
+        <div className="item__data-operations">
+          {existCartItem()}
+        </div>
+        <button type="button" className="item__data-add" onClick={() => addItem(location.state)}>
           Add to cart
         </button>
-        <button type="button" onClick={() => decrementItem(location.state)}>
-          delete item
-        </button>
-        {JSON.stringify(cartList)}
+        <Link to="/checklist" className="item__data-buy">
+          Buy now
+        </Link>
       </div>
     </div>
   );

@@ -1,12 +1,39 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlane } from '@fortawesome/free-solid-svg-icons';
+import { Redirect } from 'react-router-dom';
+import ChecklistItem from './ChecklistItem';
+import { sum } from '../utils';
 
-export default function Checklist() {
+export default function Checklist({ cartList, history }) {
+  console.log('checklist render');
+  const costSending = 35;
+  const getSubTotal = () => {
+    let subTotal = 0;
+    cartList.map((item) => {
+      subTotal += item.product.price * item.size;
+      return item;
+    });
+    return subTotal;
+  };
+
+  const buy = () => {
+    if (cartList.length === 0) {
+      alert('first select something to buy');
+      return history.push('/');
+    }
+    alert('please login');
+  };
+
   return (
     <div className="checklist">
       <div className="checklist__main">
         <div className="checklist__news">
-          <h2>Cart (2)</h2>
-          <span>Sent free via AlliExpress Direct for combined orders.</span>
+          <h2>Cart ({sum(cartList)})</h2>
+          <span>
+            <FontAwesomeIcon icon={faPlane} />
+            Sent free via AlliExpress Direct for combined orders.
+          </span>
         </div>
         <div className="checklist__list">
           <div className="checklist__header">
@@ -16,40 +43,30 @@ export default function Checklist() {
             <span>Manufacturer Direct Store</span>
             <span>Contacto</span>
           </div>
-          <ul className="checklist__content">
-            <div className="checklist__select">
-              <label><input type="checkbox" /></label>
-            </div>
-            <div className="checklist__item">
-              <img src="https://www.focus2move.com/wp-content/uploads/2020/01/Tesla-Roadster-2020-1024-03.jpg" />
-              <div className="checklist__item-content">
-                M11 jogos de esportes eletrônicos rgb streamer cavalo correndo luminoso usb com fio computador 1600dpi computador portátil mouse ambas as mãos
-              </div>
-            </div>
-            <div className="checklist__options">
-              <button>+</button>
-              <button>-</button>
-              <button>delete</button>
-              <button>like</button>
-            </div>
-          </ul>
+          {cartList &&
+            cartList.map((item) => (
+              <ChecklistItem item={item} key={item.product._id} />
+            ))}
+          {cartList && cartList.length === 0 ? <div>List is empty</div> : null}
         </div>
       </div>
       <div className="checklist__right">
         <h2>Order Resume</h2>
         <div>
           <p>Subtotal</p>
-          <p>$ 106,86</p>
+          <p>US$ {getSubTotal()}</p>
         </div>
         <div>
           <p>Envio</p>
-          <p>$ 13,46</p>
+          <p>US$ {costSending}</p>
         </div>
         <div className="checklist__right-total">
           <p>Total</p>
-          <p>$ 120,29</p>
+          <p>$ {getSubTotal() + costSending}</p>
         </div>
-        <button type="button">Comprar(3)</button>
+        <button type="button" onClick={() => buy()}>
+          Comprar({sum(cartList)})
+        </button>
       </div>
     </div>
   );

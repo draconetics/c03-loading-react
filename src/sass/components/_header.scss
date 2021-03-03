@@ -97,11 +97,15 @@
     width: 30px;
 }
 
+.header .header__cart svg{
+    color:$white;
+}
+
 .header .header__cart span{
     position: absolute;
     top:-5px;
     left: 15px;
-    width: 20px;
+    width: 22px;
     height: 20px;
     border-radius: 50%;
     background-color: $warning;

@@ -6,6 +6,7 @@ const init = {
 const task = (state = init, action) => {
   switch (action.type) {
     case 'CART_INSERT_ITEM': {
+      console.log(action.value);
       let existItem = false;
       const newCartList = state.cart.map((item) => {
         if (item.product._id === action.value._id) {

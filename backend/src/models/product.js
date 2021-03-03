@@ -7,6 +7,8 @@ const productSchema = new Schema({
   image: String,
   video: Number,
   description: String,
+  price: Number,
+  ranking: Number,
   madeUp: Date,
 }, { timestamps: true });
 

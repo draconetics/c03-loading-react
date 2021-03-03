@@ -3,8 +3,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import {sum} from '../utils';
 
-export default function Header() {
+export default function Header({ cartList }) {
+  
   return (
     <nav className="header">
       <div className="header__menu-top">
@@ -34,8 +36,10 @@ export default function Header() {
             <p>& Orders</p>
           </li>
           <li className="header__cart">
-            <span>2</span>
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <Link to="/checklist">
+              <span>{sum(cartList)}</span>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </Link>
           </li>
         </ul>
       </div>
