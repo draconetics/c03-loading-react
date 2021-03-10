@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faHeart, faPlane } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 import { connect } from 'react-redux';
 
@@ -15,7 +17,7 @@ function ChecklistItem({ item, addItem, decrementItem }) {
         </label>
       </div>
       <div className="checklist__item">
-        <img src={product.image} />
+        <img src={product.image} alt={product.name} />
         <div className="checklist__item-content">
           <ReactStars
             count={5}
@@ -24,7 +26,11 @@ function ChecklistItem({ item, addItem, decrementItem }) {
             color2="#ffd700"
             edit={false}
           />
-          <h4>US {product.price}$</h4>
+          <h4>
+            US
+            {product.price}
+            $
+          </h4>
           <p>{product.description}</p>
           <p>{product.madeUp}</p>
         </div>
@@ -52,6 +58,22 @@ function ChecklistItem({ item, addItem, decrementItem }) {
   );
 }
 
+ChecklistItem.propTypes = {
+  addItem: PropTypes.func.isRequired,
+  decrementItem: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    size: PropTypes.number.isRequired,
+    product: {
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      madeUp: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      ranking: PropTypes.number.isRequired,
+    },
+  }).isRequired,
+};
+
 function mapStateToProps(state) {
   return {
     cartList: state.cartReducer.cart,
@@ -60,8 +82,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (newItem) => dispatch({ type: 'CART_INSERT_ITEM', value: newItem }),
-  decrementItem: (item) =>
-    dispatch({ type: 'CART_DECREMENT_ITEM', value: item }),
+  decrementItem: (item) => dispatch({ type: 'CART_DECREMENT_ITEM', value: item }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChecklistItem);

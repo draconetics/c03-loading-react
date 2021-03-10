@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageLoader from 'react-load-image';
 import ReactStars from 'react-stars';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import ProductService from '../services/ProductService';
 
 const ProductList = () => {

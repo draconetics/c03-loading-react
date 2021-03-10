@@ -11,10 +11,11 @@
 .btn-primary{
     @extend %btn;
     background-color: $primary;
-}
-.btn-primary:hover{
-    background-color: rgba($primary, .9);
-    color:$warning;
+
+    &:hover{
+        background-color: rgba($primary, .9);
+        color:$warning;
+    }
 }
 
 .btn-danger{

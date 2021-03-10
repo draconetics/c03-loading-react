@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import ReactImageMagnify from 'react-image-magnify';
 import ReactStars from 'react-stars';
@@ -78,14 +79,28 @@ export default function Item(props) {
   );
 }
 
+const itemCartList = {
+  size: PropTypes.number.isRequired,
+  product: {
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    madeUp: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ranking: PropTypes.number.isRequired,
+  },
+};
 const item = {
   state: {
-    name: PropTypes.string,
-    image: PropTypes.string,
-    description: PropTypes.string,
-    madeUp: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    madeUp: PropTypes.string.isRequired,
   },
 };
 Item.propTypes = {
   location: PropTypes.shape(item).isRequired,
+  cartList: PropTypes.arrayOf(itemCartList).isRequired,
+  addItem: PropTypes.func.isRequired,
+  decrementItem: PropTypes.func.isRequired,
 };

@@ -5,7 +5,6 @@ const LoadingPage = () => (
   <div className="loading-page">
     <LoadingComponent />
   </div>
-
 );
 
 export default LoadingPage;

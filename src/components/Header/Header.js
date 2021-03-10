@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import {sum} from '../utils';
+import { sum } from '../utils';
 
 export default function Header({ cartList }) {
-  
+  console.log(cartList);
   return (
     <nav className="header">
       <div className="header__menu-top">
@@ -58,3 +59,17 @@ export default function Header({ cartList }) {
     </nav>
   );
 }
+const itemCartList = {
+  size: PropTypes.number.isRequired,
+  product: {
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    madeUp: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ranking: PropTypes.number.isRequired,
+  },
+};
+Header.propTypes = {
+  cartList: PropTypes.arrayOf(itemCartList).isRequired,
+};
